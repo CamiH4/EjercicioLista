@@ -15,10 +15,10 @@ def menu():
     print("9. Mostrar Cantidad de Estudiantes Becados")
     print("10. Salir")
     op = int(input("Escriba su opcion: "))
-    os.system('cls')
     return op
 
 def agregarRegistro():
+    os.system('cls')
     print("Agregar datos del Estudiante")
     codigo = input("Codigo: ")
     nombres = input("Nombres: ")
@@ -35,9 +35,10 @@ def agregarRegistro():
 
 
 def modificarregistro():
+    os.system('cls')
     print("Editar Registro")
     cod = input("Codigo: ")
-    estu, pos = listaEst.buscarElemento(cod)
+    estu, pos = listaEst.buscarCod(cod)
     print(f"""Nombres actual: {estu.Nombres}
 Apellidos actual: {estu.Apellidos}
 Carrera: {estu.Carrera}
@@ -51,59 +52,71 @@ Beca: {estu.Becado}""")
     else: nuevaBeca = False
     newEst = est(estu.Codigo, nuevoNombres, nuevoApellidos, nuevaCarrera, nuevaBeca)
     listaEst.editarElemento(newEst, pos)
- 
+    print("="*40)
+
 def eliminarRegistro():
+    os.system('cls')
     print("Eliminar Registro")
     cod = input("Codigo: ")
-    est, pos = listaEst.buscarElemento(cod)
-    print(f"""Realmenete desea eliminar el registro {est}""")
+    estu, pos = listaEst.buscarCod(cod)
+    print(f"""Realmenete desea eliminar el registro {estu}""")
     resp = input("SI - NO: ")
     if resp.upper() == "SI":
-        listaEst.eliminarElemento(est)
+        listaEst.eliminarElemento(estu)
     else:
         print("Operacion cancelada")
-
+    print("="*40)
+    
 def buscarCodigo():
-    print("Buscar Registro")
+    os.system('cls')
+    print("Buscar Codigo")
     cod = input("Codigo: ")
     try:
-         est, pos = listaEst.buscarElemento(cod)
+         est, pos = listaEst.buscarCod(cod)
          if est.Codigo != None:
              print(est)
     except Exception as ex:
         print("Sigue adelante")
+        print("="*40)
 
 def buscarNombre():
+    os.system('cls')
     print("Buscar Nombres")
     nombre = input("Nombres: ")
     try:
-         est, pos = listaEst.buscarElemento(nombre)
+         est, pos = listaEst.buscarNom(nombre)
          if est.Nombres != None:
              print(est)
     except Exception as ex:
         print("Sigue adelante")
+        print("="*40)
 
 def buscarApellido():
+    os.system('cls')
     print("Buscar Apellidos")
     apellidos = input("Apellidos: ")
     try:
-         est, pos = listaEst.buscarElemento(apellidos)
+         est, pos = listaEst.buscarApe(apellidos)
          if est.Apellidos != None:
              print(est)
     except Exception as ex:
         print("Sigue adelante")
+        print("="*40)
 
 def buscarCarrera():
+    os.system('cls')
     print("Buscar Carrera")
     carrera = input("Carrera: ")
     try:
-         est, pos = listaEst.buscarElemento(carrera)
+         est, pos = listaEst.buscarCar(carrera)
          if est.Carrera != None:
              print(est)
     except Exception as ex:
         print("Sigue adelante")
+        print("="*40)
 
 def buscarBecas():
+    os.system('cls')
     if listaEst.lista == []:
         print("No hay ningun estudiante registrado")
     else:
@@ -118,6 +131,7 @@ def buscarBecas():
         print(f'Numero de estudiantes no becados: {noBeca}')
     
 def mostrarRegistros():
+    os.system('cls')
     for est in listaEst.lista:
         print(est)
         print("="*40)
@@ -126,7 +140,6 @@ def main():
     op = 0 
     while( op!= 9):
         op = menu()
-        os.system("cls")
         if op == 1: agregarRegistro()
         elif op == 2: modificarregistro()
         elif op == 3: eliminarRegistro()

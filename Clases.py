@@ -45,25 +45,56 @@ class ListadoEst:
         except Exception as ex:
             print("Ocurrio un error al eliminar", str(ex))
     
-    def buscarElemento(self, codigo, nom, ape, car, bec):
+    def buscarCod(self, codigo):
         try:
             pos = 0
             for est in self.lista:
                 if est.Codigo == codigo:
                     print("Estudiante encontrado...")
                     return est, pos
-                elif est.Nombres == nom:
-                    print("Estudiante encontrado...")
-                    return est, pos
-                elif est.Apellidos == ape:
-                    print("Estudiante encontrado...")
-                    return est, pos
-                elif est.Carrera == car:
-                    print("Estudiante encontrado...")
-                    return est, pos
+                    pos += 1
             else:
                 print("No se encontro...")
-            pos += 1
+        except Exception as ex:
+            print("Error al buscar elemento: ", str(ex))
+
+    def buscarNom(self, nom):
+        try:
+            pos = 0
+            for est in self.lista:
+                
+                if est.Nombres == nom:
+                    print("Estudiante encontrado...")
+                    return est, pos
+                    pos += 1
+            else:
+                print("No se encontro...")
+        except Exception as ex:
+            print("Error al buscar elemento: ", str(ex))
+
+    def buscarApe(self,ape):
+        try:
+            pos = 0
+            for est in self.lista:
+                if est.Apellidos == ape:
+                    print("Estudiante encontrado...")
+                    return est, pos    
+                    pos += 1
+            else:
+                print("No se encontro...")
+        except Exception as ex:
+            print("Error al buscar elemento: ", str(ex))
+
+    def buscarCar(self, car):
+        try:
+            pos = 0
+            for est in self.lista:
+                if est.Carrera == car:
+                    print("Estudiante encontrado...")
+                    return est, pos
+                    pos += 1
+            else:
+                print("No se encontro...")
         except Exception as ex:
             print("Error al buscar elemento: ", str(ex))
 
